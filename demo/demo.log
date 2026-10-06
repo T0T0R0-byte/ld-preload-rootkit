@@ -1,0 +1,72 @@
+Script started on 2026-09-29 18:01:11+05:30 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="140" LINES="35"]
+[?2004h]0;cb012653@cb012653-vm: ~/partc[01;32mcb012653@cb012653-vm[00m:[01;34m~/partc[00m$ [7mcat /tmp/secret.txt[27m
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccat /tmp/secret.txt
+[A
+[?2004lTOP SECRET: COMP60024 rootkit demonstration
+[?2004h]0;cb012653@cb012653-vm: ~/partc[01;32mcb012653@cb012653-vm[00m:[01;34m~/partc[00m$ [7mLD_PRELOAD=./rootkit.so ./victim[27m
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[CLD_PRELOAD=./rootkit.so ./victim
+[A
+[?2004l[rootkit] interception active for pid 5406
+[victim] starting: uid=1000 euid=1000 pid=5406
+
+[victim] --- file access test ---
+[victim] open("/tmp/secret.txt") FAILED: No such file or directory
+
+[victim] --- directory listing test ---
+[rootkit] interception active for pid 5407
+[rootkit] interception active for pid 5408
+ls: cannot access '/tmp/secret.txt': No such file or directory
+[victim] secret.txt not visible to ls
+
+[victim] --- process execution test ---
+[rootkit] interception active for pid 5409
+Linux cb012653-vm 7.0.0-31-generic #31~24.04.1-Ubuntu SMP PREEMPT_DYNAMIC Mon Aug 10 09:38:02 UTC 2 x86_64 x86_64 x86_64 GNU/Linux
+[victim] child finished
+[?2004h]0;cb012653@cb012653-vm: ~/partc[01;32mcb012653@cb012653-vm[00m:[01;34m~/partc[00m$ [7mLD_PRELOAD=./rootkit.so cat /tmp/secret.txt[27m
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[CLD_PRELOAD=./rootkit.so cat /tmp/secret.txt
+[A
+[?2004l[rootkit] interception active for pid 5410
+cat: /tmp/secret.txt: No such file or directory
+[?2004h]0;cb012653@cb012653-vm: ~/partc[01;32mcb012653@cb012653-vm[00m:[01;34m~/partc[00m$ [7mLD_PRELOAD=./rootkit.so ls -l /tmp | grep secret[27m
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[CLD_PRELOAD=./rootkit.so ls -l /tmp | grep secret
+[A
+[?2004l[rootkit] interception active for pid 5411
+[?2004h]0;cb012653@cb012653-vm: ~/partc[01;32mcb012653@cb012653-vm[00m:[01;34m~/partc[00m$ [7mcat /tmp/rootkit.log[27m
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccat /tmp/rootkit.log
+[A
+[?2004l[2026-09-29 17:53:18] [pid 5213] === rootkit.so loaded (pid=5213 ppid=3380)
+[2026-09-29 17:53:18] [pid 5213] printf() intercepted
+[2026-09-29 17:53:18] [pid 5213] open("/tmp/secret.txt") BLOCKED -> ENOENT (concealed)
+[2026-09-29 17:53:18] [pid 5214] === rootkit.so loaded (pid=5214 ppid=5213)
+[2026-09-29 17:53:18] [pid 5215] execve("/usr/bin/ls") monitored (pid=5215 ppid=5214)
+[2026-09-29 17:53:18] [pid 5215] === rootkit.so loaded (pid=5215 ppid=5214)
+[2026-09-29 17:53:18] [pid 5215] statx(-100, "/tmp/secret.txt") BLOCKED -> ENOENT (concealed)
+[2026-09-29 17:53:18] [pid 5213] fork() -> child pid 5216 (parent 5213)
+[2026-09-29 17:53:18] [pid 5216] fork() -> child pid 0 (parent 5216)
+[2026-09-29 17:53:18] [pid 5216] execve("/bin/uname") monitored (pid=5216 ppid=5213)
+[2026-09-29 17:53:18] [pid 5216] === rootkit.so loaded (pid=5216 ppid=5213)
+[2026-09-29 17:57:41] [pid 5224] === rootkit.so loaded (pid=5224 ppid=3380)
+[2026-09-29 17:57:41] [pid 5224] statx(-100, "/tmp/secret.txt") BLOCKED -> ENOENT (concealed)
+[2026-09-29 17:58:03] [pid 5226] === rootkit.so loaded (pid=5226 ppid=3380)
+[2026-09-29 17:58:03] [pid 5226] open("/tmp/secret.txt") BLOCKED -> ENOENT (concealed)
+[2026-09-29 17:58:13] [pid 5227] === rootkit.so loaded (pid=5227 ppid=3380)
+[2026-09-29 17:58:13] [pid 5227] readdir: concealed entry "secret.txt"
+[2026-09-29 18:01:24] [pid 5406] === rootkit.so loaded (pid=5406 ppid=5399)
+[2026-09-29 18:01:24] [pid 5406] printf() intercepted
+[2026-09-29 18:01:24] [pid 5406] open("/tmp/secret.txt") BLOCKED -> ENOENT (concealed)
+[2026-09-29 18:01:24] [pid 5407] === rootkit.so loaded (pid=5407 ppid=5406)
+[2026-09-29 18:01:24] [pid 5408] execve("/usr/bin/ls") monitored (pid=5408 ppid=5407)
+[2026-09-29 18:01:24] [pid 5408] === rootkit.so loaded (pid=5408 ppid=5407)
+[2026-09-29 18:01:24] [pid 5408] statx(-100, "/tmp/secret.txt") BLOCKED -> ENOENT (concealed)
+[2026-09-29 18:01:24] [pid 5406] fork() -> child pid 5409 (parent 5406)
+[2026-09-29 18:01:24] [pid 5409] fork() -> child pid 0 (parent 5409)
+[2026-09-29 18:01:24] [pid 5409] execve("/bin/uname") monitored (pid=5409 ppid=5406)
+[2026-09-29 18:01:24] [pid 5409] === rootkit.so loaded (pid=5409 ppid=5406)
+[2026-09-29 18:01:32] [pid 5410] === rootkit.so loaded (pid=5410 ppid=5399)
+[2026-09-29 18:01:32] [pid 5410] open("/tmp/secret.txt") BLOCKED -> ENOENT (concealed)
+[2026-09-29 18:01:37] [pid 5411] === rootkit.so loaded (pid=5411 ppid=5399)
+[2026-09-29 18:01:37] [pid 5411] readdir: concealed entry "secret.txt"
+[?2004h]0;cb012653@cb012653-vm: ~/partc[01;32mcb012653@cb012653-vm[00m:[01;34m~/partc[00m$ c[Kc[Kexit
+[?2004lexit
+
+Script done on 2026-09-29 18:02:23+05:30 [COMMAND_EXIT_CODE="0"]

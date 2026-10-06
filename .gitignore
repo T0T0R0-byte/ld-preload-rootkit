@@ -1,0 +1,4 @@
+*.so
+victim
+*.o
+core
