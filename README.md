@@ -86,6 +86,10 @@ targets. Do not load this into a system you do not own or have written permissio
 
 **Faraj Farook** (CB012653) - `rootkit.c`, `victim.c` and the demo recording.
 
+## The reports as submitted
+
+The original submitted documents are in [`reports/`](reports/), kept alongside the write-up above so the artefact can be checked directly.
+
 ## License
 
 MIT, see [LICENSE](LICENSE).

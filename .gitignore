@@ -2,3 +2,5 @@
 victim
 *.o
 core
+
+!reports/**
