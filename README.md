@@ -55,6 +55,14 @@ cb012653@cb012653-vm:~/partc$ LD_PRELOAD=./rootkit.so ./victim
 Log lines for pids 5407-5409 show the child processes inheriting the preloaded library, which is why
 concealment survives into `ls` and into the exec'd binary.
 
+## What the demo looks like
+
+![Rootkit demo run](demo/demo-preview.png)
+
+That is a rendering of the recorded typescript, not a screenshot of the desktop: the lines are taken
+verbatim from `demo/demo.log`, with the terminal control codes stripped out. The same file reads fine
+on the first line and returns ENOENT for every attempt after `LD_PRELOAD` goes on.
+
 ## Build and run
 
 ```bash
@@ -89,14 +97,6 @@ targets. Do not load this into a system you do not own or have written permissio
 ## The reports as submitted
 
 The original submitted documents are in [`reports/`](reports/), kept alongside the write-up above so the artefact can be checked directly.
-
-## What the demo looks like
-
-![Rootkit demo run](demo/demo-preview.png)
-
-That is a rendering of the recorded typescript, not a screenshot of the desktop: the lines are taken
-verbatim from `demo/demo.log`, with the terminal control codes stripped out. The same file reads fine
-on the first line and returns ENOENT for every attempt after `LD_PRELOAD` goes on.
 
 ## License
 
