@@ -90,6 +90,14 @@ targets. Do not load this into a system you do not own or have written permissio
 
 The original submitted documents are in [`reports/`](reports/), kept alongside the write-up above so the artefact can be checked directly.
 
+## What the demo looks like
+
+![Rootkit demo run](demo/demo-preview.png)
+
+That is a rendering of the recorded typescript, not a screenshot of the desktop: the lines are taken
+verbatim from `demo/demo.log`, with the terminal control codes stripped out. The same file reads fine
+on the first line and returns ENOENT for every attempt after `LD_PRELOAD` goes on.
+
 ## License
 
 MIT, see [LICENSE](LICENSE).
