@@ -82,10 +82,9 @@ instead, which is a different technique with a different footprint.
 Demonstration code, run against my own VM and my own files, with no persistence and no third-party
 targets. Do not load this into a system you do not own or have written permission to test.
 
-## Credits
+## Author
 
-- Implementation (`rootkit.c`, `victim.c`, demo): **Faraj Farook** (CB012653)
-- Coursework partner on the shared assignment: **Sajad Niflar** (CB013107)
+**Faraj Farook** (CB012653) - `rootkit.c`, `victim.c` and the demo recording.
 
 ## License
 
